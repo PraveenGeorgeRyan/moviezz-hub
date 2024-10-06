@@ -6,6 +6,7 @@ const API_URL = "http://www.omdbapi.com/";
 
 export const searchMovies = async (searchTerm: string): Promise<Movie[]> => {
   try {
+    console.log("API_KEY", API_KEY);
     const response = await axios.get(API_URL, {
       params: {
         apikey: API_KEY,
@@ -35,9 +36,10 @@ export const getMovieDetails = async (
   imdbID: string
 ): Promise<Movie | null> => {
   try {
+    console.log("API_KEY", API_KEY);
     const response = await axios.get(API_URL, {
       params: {
-        apikey: process.env.REACT_APP_OMDB_API_KEY,
+        apikey: API_KEY,
         i: imdbID,
         plot: "full",
       },
