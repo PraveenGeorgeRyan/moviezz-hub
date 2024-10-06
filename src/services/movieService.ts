@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { Movie } from "../types";
-
+const API_KEY = import.meta.env.VITE_REACT_APP_OMDB_API_KEY;
 const API_URL = "http://www.omdbapi.com/";
 
 export const searchMovies = async (searchTerm: string): Promise<Movie[]> => {
   try {
     const response = await axios.get(API_URL, {
       params: {
-        apikey: process.env.REACT_APP_OMDB_API_KEY,
+        apikey: API_KEY,
         s: searchTerm,
         type: "movie",
       },
