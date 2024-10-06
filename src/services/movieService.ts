@@ -2,14 +2,13 @@
 import axios from "axios";
 import { Movie } from "../types";
 
-const API_KEY = "a59b9bcf";
 const API_URL = "http://www.omdbapi.com/";
 
 export const searchMovies = async (searchTerm: string): Promise<Movie[]> => {
   try {
     const response = await axios.get(API_URL, {
       params: {
-        apikey: API_KEY,
+        apikey: process.env.REACT_APP_OMDB_API_KEY,
         s: searchTerm,
         type: "movie",
       },
@@ -38,7 +37,7 @@ export const getMovieDetails = async (
   try {
     const response = await axios.get(API_URL, {
       params: {
-        apikey: API_KEY,
+        apikey: process.env.REACT_APP_OMDB_API_KEY,
         i: imdbID,
         plot: "full",
       },
