@@ -2,11 +2,11 @@
 import axios from "axios";
 import { Movie } from "../types";
 const API_KEY = import.meta.env.VITE_REACT_APP_OMDB_API_KEY;
-const API_URL = "http://www.omdbapi.com/";
+const API_URL = import.meta.env.VITE_REACT_APP_OMDB_API_URL;
 
 export const searchMovies = async (searchTerm: string): Promise<Movie[]> => {
   try {
-    console.log("API_KEY", API_KEY);
+    // console.log("API_KEY", API_KEY);
     const response = await axios.get(API_URL, {
       params: {
         apikey: API_KEY,
@@ -36,7 +36,7 @@ export const getMovieDetails = async (
   imdbID: string
 ): Promise<Movie | null> => {
   try {
-    console.log("API_KEY", API_KEY);
+    // console.log("API_KEY", API_KEY);
     const response = await axios.get(API_URL, {
       params: {
         apikey: API_KEY,
